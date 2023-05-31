@@ -66,10 +66,10 @@ formController.deleteDocument = async (req, res, next) => {
 
   const myQuery = { _id: _id };
   console.log('delete query', myQuery);
-
+  //const myQuery = '647775a71ae512d33651c166' //hardcoding delete of this form objectID
   try {
     // query db and deleteOne document
-    const result = await Form.deleteOne(myQuery);
+    const result = await Form.deleteOne({_id: myQuery});
     res.locals.result = result
 
     next();
