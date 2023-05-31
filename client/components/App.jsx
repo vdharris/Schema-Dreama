@@ -100,12 +100,9 @@ function App() {
       body: JSON.stringify({
         title: currentDocument.title,
         schemaSchema: JSON.stringify(kvpArr),
-<<<<<<< HEAD
-=======
         _id: currentDocument._id,
         //user: 'home',
         //user: user want current logged in user
->>>>>>> dev2
       }),
       mode: 'cors',
     })
@@ -152,13 +149,6 @@ function App() {
                 <span>
                   <InputButton schemaFunc={schemaFunc} />
                 </span>
-<<<<<<< HEAD
-                <div>
-                  {' '}
-                  <PastProjects updateState={setKvp} setCurrentDocument={setCurrentDocument} />{' '}
-                </div>
-=======
->>>>>>> dev2
                 <SchemaMaker
                   kvpArr={kvpArr}
                   schemaFunc={schemaFunc}
