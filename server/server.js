@@ -86,9 +86,10 @@ app.get('/getalldocuments/:id', formController.getAllDocuments, (req, res) => {
 
 //GET for selecting past document
 
-app.get('/:id', formController.getOneDocument, (req, res) => {
-    return res.status(200).json(res.locals.retrievedDocument)
-})
+// app.get('/:id', formController.getOneDocument, (req, res) => {
+//     console.log('getOneDocument success')
+//     return res.status(200).json(res.locals.retrievedDocument)
+// })
 
 app.post('/login', userController.verifyLogin, (req, res) => {
     return res.status(200).json(res.locals)
