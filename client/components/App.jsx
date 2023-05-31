@@ -10,7 +10,18 @@ import InputButton from './InputButton.jsx';
 function App() {
   //State for Key-Value Pairs
   const [kvpArr, setKvp] = useState([
-    { name: 'GoblinGang', type: 'Number', require: false },
+    { name: 'GoblinGang', 
+    type: 'string', 
+    require: false, 
+    minmax: {
+      string: "min",
+      value: '0'
+    },
+    default:{
+      value: 'default',
+      placeholder: 'placeholder',
+    }
+   },
   ]);
   const [currentDocument, setCurrentDocument] = useState({
     title: 'temp',
@@ -80,7 +91,19 @@ function App() {
   };
   schemaFunc.addRow = () => {
     const newState = structuredClone(kvpArr);
-    newState.push({ name: '', type: 'string', require: false });
+    newState.push({ 
+      name: 'new row',
+      type: 'string', 
+      require: false, 
+      minmax: {
+      string: "min",
+      value: '0'
+    },
+    default:{
+      value: `default`,
+      placeholder: '',
+    }
+     });
     setKvp(newState);
   };
 
@@ -108,7 +131,7 @@ function App() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('data in saved schemas', data);
+        console.log('data in saved schemas', data.schemaSchema);
         setCurrentDocument(data);
         setKvp(JSON.parse(data.schemaSchema));
       })
@@ -116,7 +139,19 @@ function App() {
   };
 
   schemaFunc.clearSchema = () => {
-    setKvp([{ name: 'Write something', type: 'Number', require: false }]);
+    setKvp([{ 
+      name: 'Write something', 
+      type: 'String', 
+      require: false, 
+     minmax: {
+      string: "min",
+      value: '0'
+    },default:{
+      value: `default`,
+      placeholder: '',
+    }
+
+    }]);
   };
 
   // useEffect(() => {
