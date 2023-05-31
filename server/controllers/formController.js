@@ -104,21 +104,21 @@ formController.getAllDocuments = async (req, res, next) => {
 
 ////GET request returning single document based on id
 
-formController.getOneDocument = async (req, res, next) => {
-  const { id } = req.params;
+// formController.getOneDocument = async (req, res, next) => {
+//   const { id } = req.params;
 
-  try {
+//   try {
 
-    const result = await Form.findOne({ _id: id })
-    res.locals.retrievedDocument = result
-    next()
-  } catch (error) {
-    return next({
-      log: 'error in the getOneDocument middleware controller',
-      err: error,
-    });
-  }
-};
+//     const result = await Form.findOne({ _id: id })
+//     res.locals.retrievedDocument = result
+//     next()
+//   } catch (error) {
+//     return next({
+//       log: 'error in the getOneDocument middleware controller',
+//       err: error,
+//     });
+//   }
+// };
 
 // {"_id":{"$oid":"6472390fdbeb9b56b2f98835"},
 // "schemaSchema": "sample schema",

@@ -3,7 +3,7 @@ import React from 'react';
 const SchemaDisplay = ({ kvpArr, currentDocument }) => {
   // console.log('-----------------', kvpArr)
   
-  let schemaArr = [`const ${currentDocument.title} = new Schema ({ \n`];
+  let schemaArr = [`const ${currentDocument.title} = new Schema ({ `];
   for (const ele of kvpArr) {
 
 

@@ -44,7 +44,8 @@ function PastProjects(props){
     return (
     <li key={item._id}
     onClick = {()=> {
-      props.updateState(JSON.parse(item.schemaSchema))
+      props.updateState(JSON.parse(item.schemaSchema));
+      props.schemaFunc.addName(item.title);
     }}
     > 
         {item.title}
