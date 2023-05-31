@@ -10,12 +10,22 @@ import InputButton from './InputButton.jsx';
 function App() {
   //State for Key-Value Pairs
   const [kvpArr, setKvp] = useState([
-    { name: 'GoblinGang', type: 'Number', require: false },
+    { name: 'GoblinGang', 
+    type: 'string', 
+    require: false, 
+    minmax: {
+      string: "min",
+      value: '0'
+    },
+    default:{
+      value: 'default',
+      placeholder: 'placeholder',
+    }
+   },
   ]);
   const [currentDocument, setCurrentDocument] = useState({
     title: 'temp',
     schemaSchema: 'temp',
-    _id: 'temp',
   });
 
   //state for login
@@ -25,6 +35,7 @@ function App() {
   // const [signedUp, setSignedUp] = useState(false);
 
   //State for Past Projects
+  const [pastProjects, setPastProjects] = useState([]);
 
   //State for user object
   const [user, setUser] = useState({});
@@ -72,7 +83,6 @@ function App() {
           setCurrentDocument({
             title: 'temp',
             schemaSchema: 'temp',
-            _id: 'temp',
           });
           schemaFunc.clearSchema();
         }
@@ -81,7 +91,19 @@ function App() {
   };
   schemaFunc.addRow = () => {
     const newState = structuredClone(kvpArr);
-    newState.push({ name: '', type: 'string', require: false });
+    newState.push({ 
+      name: 'new row',
+      type: 'string', 
+      require: false, 
+      minmax: {
+      string: "min",
+      value: '0'
+    },
+    default:{
+      value: `default`,
+      placeholder: '',
+    }
+     });
     setKvp(newState);
   };
 
@@ -109,16 +131,27 @@ function App() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('data in saveschema', data);
-        setCurrentDocument(data, 'save');
-        console.log('current document', currentDocument)
+        console.log('data in saved schemas', data.schemaSchema);
+        setCurrentDocument(data);
         setKvp(JSON.parse(data.schemaSchema));
       })
       .catch((err) => console.log(err));
   };
 
   schemaFunc.clearSchema = () => {
-    setKvp([{ name: 'Write something', type: 'Number', require: false }]);
+    setKvp([{ 
+      name: 'Write something', 
+      type: 'String', 
+      require: false, 
+     minmax: {
+      string: "min",
+      value: '0'
+    },default:{
+      value: `default`,
+      placeholder: '',
+    }
+
+    }]);
   };
 
   // useEffect(() => {
