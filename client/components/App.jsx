@@ -42,9 +42,9 @@ function App() {
 
   //functions to drill down
 
-  const userObject = (userObject) => {
-    return setUser(userObject);
-  };
+  // const userObject = (userObject) => {
+  //   return setUser(userObject);
+  // };
 
   const handleLogOut = () => {
     setUser({});
@@ -125,7 +125,6 @@ function App() {
         schemaSchema: JSON.stringify(kvpArr),
         _id: currentDocument._id,
         user: user,
-        //user: 'home',
         //user: user want current logged in user
       }),
       mode: 'cors',
@@ -192,14 +191,14 @@ function App() {
                 />
                 <div>
                   {' '}
-                  <PastProjects updateState={setKvp} />{' '}
+                  <PastProjects updateState={setKvp} user={user} />{' '}
                 </div>
               </>
             ) : (
               <>
                 <Login
-                  handleLogin={() => setLoggedIn(true)}
-                  userObject={userObject}
+                  setLoggedIn={setLoggedIn}
+                  setUser={setUser}
                 />
               </>
             )
