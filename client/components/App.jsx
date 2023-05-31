@@ -130,12 +130,10 @@ function App() {
                 <div>
                   <img className="menu-bg" src={user.picture}></img>
 
-                  <button className="button" onClick={() => setLoggedIn(false)}>
-                    Log Out
-                  </button>
-
-                  <h3>{user.name}</h3>
-                </div>
+      
+          <h1>Schema Dreama</h1>
+          <div className='profile-box'>
+            <img className="profile-pic" src={user.picture}></img>
 
                 <button onClick={handleLogOut}>Log Out</button>
 
