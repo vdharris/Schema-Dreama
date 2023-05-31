@@ -15,7 +15,6 @@ function App() {
   const [currentDocument, setCurrentDocument] = useState({
     title: 'temp',
     schemaSchema: 'temp',
-    _id: 'temp',
   });
 
   //state for login
@@ -25,6 +24,7 @@ function App() {
   // const [signedUp, setSignedUp] = useState(false);
 
   //State for Past Projects
+  const [pastProjects, setPastProjects] = useState([]);
 
   //State for user object
   const [user, setUser] = useState({});
@@ -72,7 +72,6 @@ function App() {
           setCurrentDocument({
             title: 'temp',
             schemaSchema: 'temp',
-            _id: 'temp',
           });
           schemaFunc.clearSchema();
         }
@@ -109,8 +108,8 @@ function App() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setCurrentDocument(data, 'save');
+        console.log('data in saved schemas', data);
+        setCurrentDocument(data);
         setKvp(JSON.parse(data.schemaSchema));
       })
       .catch((err) => console.log(err));
