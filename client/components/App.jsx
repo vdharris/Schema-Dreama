@@ -191,7 +191,7 @@ function App() {
                 />
                 <div>
                   {' '}
-                  <PastProjects updateState={setKvp} user={user} />{' '}
+                  <PastProjects schemaFunc={schemaFunc} updateState={setKvp} user={user} />{' '}
                 </div>
               </>
             ) : (
