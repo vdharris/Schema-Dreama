@@ -41,7 +41,7 @@ formController.createDocument = async (req, res, next) => {
     try {
       console.log('in the try')
         const document = await Form.create({title, schemaSchema});
-        const userFound = await User.findOneAndUpdate({ username: user }, { $push: {savedSchema: { title, formId: document._id }}}, {new: true});
+        const userFound = await User.findOneAndUpdate({ _id: user }, { $push: {savedSchema: document._id}}, {new: true});
         console.log('in the callback')
       res.locals.newDocument = document;
       console.log(res.locals.newDocument, 'res.locals')
@@ -86,10 +86,12 @@ formController.deleteDocument = async (req, res, next) => {
 formController.getAllDocuments = async (req, res, next) => {
   // Deconstruct data from request body
   // Process obtained data
+  console.log('req params for get all documents', req.params)
   try {
     // Interact with DB
-    const documents = await Form.find({});
-    res.locals.allDocuments = documents;
+    const targetUser = await User.findOne({ _id: req.params.id}).populate('savedSchema');
+    // console.log('targetUser', targetUser);
+    res.locals.allDocuments = targetUser.savedSchema;
     // Invoke next middleware
     return next();
   } catch (error) {

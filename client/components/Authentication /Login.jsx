@@ -40,7 +40,9 @@ const Login = (props) =>  {
 
     
     if (responseData.verified){
-     props.handleLogin();
+    //  props.handleLogin();
+    props.setLoggedIn(true);
+    props.setUser(responseData.userId);
     }else{
       alert("Invalid login credentials, please sign up");
     }

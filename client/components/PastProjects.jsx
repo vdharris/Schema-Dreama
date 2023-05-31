@@ -5,7 +5,7 @@ function PastProjects(props){
   
   const [data, setData] = useState([]);
   
-    const url = "/getalldocuments";
+    const url = `/getalldocuments/${props.user}`;
     const tempData = [
       {
           "_id": "6472390fdbeb9b56b2f98835",
@@ -26,7 +26,7 @@ function PastProjects(props){
       }]
    
       
-  // console.log(data)
+  console.log('retrieved data in past projects',data)
   const styles = {
     color:'blue', 
     display: "flex",
@@ -39,7 +39,9 @@ function PastProjects(props){
   //1. you want to get the document id when they click on the link
   //2. make a fetch request based on the id
   //3. display the SchemaMaker
-  const dataElements = data.map(item => (
+  const dataElements = data.map(item => {
+    console.log('item', item);
+    return (
     <li key={item._id}
     onClick = {()=> {
       props.updateState(JSON.parse(item.schemaSchema))
@@ -48,7 +50,7 @@ function PastProjects(props){
         {item.title}
      
     </li>
-  ));
+  )});
     useEffect(() => {
         const fetchData = async () => {
           try {
@@ -59,14 +61,14 @@ function PastProjects(props){
                  'Content-type': 'application/json; charset=UTF-8',
               },
               mode: 'cors'
-        
             });
             const result = await response.json();
             console.log('result in pastprojects', result);
             setData(result);
           } catch (error) {
-            console.error('Error fetching data:', error);
-          }
+            // console.error('Error fetching data:', error);
+            console.log(error);
+          };
         };
         console.log('data in pastprojects', data);
         fetchData();
