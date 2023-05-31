@@ -11,9 +11,12 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema ({
     username: {type: String, required: true},
     password: {type: String, required: true},
-    savedSchema: [{ 
-        title: String,
-        formId: {type: Schema.Types.ObjectId, ref: 'formSchema', required: false}}]
+    savedSchema: [
+        {type: Schema.Types.ObjectId, ref: 'formSchema'}
+    ],
+    // savedSchema: [{ 
+    //     title: String,
+    //     formId: {type: Schema.Types.ObjectId, ref: 'formSchema', required: false}}]
 });
 
 // create model for loginSchema

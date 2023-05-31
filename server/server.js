@@ -79,8 +79,9 @@ app.patch('/', formController.updateDocument, (req, res) => {
 
 
 //GET to return all past documents
-app.get('/getalldocuments', formController.getAllDocuments, (req, res) => {
-    return res.status(200).json(res.locals.allDocuments)
+app.get('/getalldocuments/:id', formController.getAllDocuments, (req, res) => {
+    console.log('all documents', res.locals.allDocuments)
+    return res.status(200).send(res.locals.allDocuments)
 });
 
 //GET for selecting past document
