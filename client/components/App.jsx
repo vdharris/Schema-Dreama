@@ -15,7 +15,6 @@ function App() {
   const [currentDocument, setCurrentDocument] = useState({
     title: 'temp',
     schemaSchema: 'temp',
-    _id: 'temp',
   });
 
   //state for login
@@ -72,7 +71,6 @@ function App() {
           setCurrentDocument({
             title: 'temp',
             schemaSchema: 'temp',
-            _id: 'temp',
           });
           schemaFunc.clearSchema();
         }
@@ -95,14 +93,14 @@ function App() {
       body: JSON.stringify({
         title: currentDocument.title,
         schemaSchema: JSON.stringify(kvpArr),
-        _id: currentDocument._id,
       }),
       mode: 'cors',
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log('this is the data');
         console.log(data);
-        setCurrentDocument(data, 'save');
+        setCurrentDocument(data);
         setKvp(JSON.parse(data.schemaSchema));
       })
       .catch((err) => console.log(err));
