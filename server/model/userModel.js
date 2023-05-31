@@ -13,7 +13,7 @@ const userSchema = new Schema ({
     password: {type: String, required: true},
     savedSchema: [{ 
         title: String,
-        formid: {type: Schema.Types.ObjectId, ref: 'formSchema', required: false}}]
+        formId: {type: Schema.Types.ObjectId, ref: 'formSchema', required: false}}]
 });
 
 // create model for loginSchema
