@@ -60,6 +60,7 @@ pre {
   background-color: var(--secondary-color);
   width: 80%;
   font-family: 'Nunito', sans-serif;
+  align-items: center;
 }
 
 .profile-pic {
@@ -77,6 +78,7 @@ button {
 input {
   font-family: 'Nunito', sans-serif;
 }
+
 
 .profile-box {
   display: flex;

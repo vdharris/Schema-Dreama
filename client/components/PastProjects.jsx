@@ -43,7 +43,9 @@ function PastProjects(props){
     console.log('item', item);
     return (
     <li key={item._id}
-    onClick = {()=> props.updateState(JSON.parse(item.schemaSchema))}
+    onClick = {()=> {
+      props.updateState(JSON.parse(item.schemaSchema))
+    }}
     > 
         {item.title}
      
@@ -68,8 +70,9 @@ function PastProjects(props){
             console.log(error);
           };
         };
-    
+        console.log('data in pastprojects', data);
         fetchData();
+        
       }, []);
     return ( <>
     <h2>Saved Schemas</h2>
