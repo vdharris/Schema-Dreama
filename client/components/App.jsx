@@ -22,7 +22,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   //state for signup
-  const [signedUp, setSignedUp] = useState(false);
+  // const [signedUp, setSignedUp] = useState(false);
 
   //State for Past Projects
 
@@ -85,6 +85,12 @@ function App() {
     setKvp(newState);
   };
 
+  schemaFunc.minusRow = () => {
+    const newState = structuredClone(kvpArr);
+    if (newState.length > 1) newState.pop();
+    setKvp(newState);
+  };
+
   schemaFunc.saveSchema = () => {
     fetch('/', {
       method: 'POST',
@@ -112,10 +118,10 @@ function App() {
     setKvp([{ name: 'Write something', type: 'Number', require: false }]);
   };
 
-  useEffect(() => {
-    console.log(currentDocument, 'useEffect');
-    console.log(kvpArr, 'kvp');
-  }, [currentDocument, kvpArr]);
+  // useEffect(() => {
+  //   console.log(currentDocument, 'useEffect');
+  //   console.log(kvpArr, 'kvp');
+  // }, [currentDocument, kvpArr]);
 
   return (
     <div id="appBox">
@@ -130,9 +136,9 @@ function App() {
                 <div>
                   <img className="menu-bg" src={user.picture}></img>
 
-                  <button className="button" onClick={() => setLoggedIn(false)}>
+                  {/* <button className="button" onClick={() => setLoggedIn(false)}>
                     Log Out
-                  </button>
+                  </button> */}
 
                   <h3>{user.name}</h3>
                 </div>
@@ -142,15 +148,15 @@ function App() {
                 <span>
                   <InputButton schemaFunc={schemaFunc} />
                 </span>
-                <div>
-                  {' '}
-                  <PastProjects updateState={setKvp} />{' '}
-                </div>
                 <SchemaMaker
                   kvpArr={kvpArr}
                   schemaFunc={schemaFunc}
                   currentDocument={currentDocument}
                 />
+                <div>
+                  {' '}
+                  <PastProjects updateState={setKvp} />{' '}
+                </div>
               </>
             ) : (
               <>
