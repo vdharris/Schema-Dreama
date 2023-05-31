@@ -31,9 +31,9 @@ function App() {
 
   //functions to drill down
 
-  const userObject = (userObject) => {
-    return setUser(userObject);
-  };
+  // const userObject = (userObject) => {
+  //   return setUser(userObject);
+  // };
 
   const handleLogOut = () => {
     setUser({});
@@ -102,15 +102,16 @@ function App() {
         title: currentDocument.title,
         schemaSchema: JSON.stringify(kvpArr),
         _id: currentDocument._id,
-        //user: 'home',
+        user: user,
         //user: user want current logged in user
       }),
       mode: 'cors',
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log('data in saveschema', data);
         setCurrentDocument(data, 'save');
+        console.log('current document', currentDocument)
         setKvp(JSON.parse(data.schemaSchema));
       })
       .catch((err) => console.log(err));
@@ -157,14 +158,14 @@ function App() {
                 />
                 <div>
                   {' '}
-                  <PastProjects updateState={setKvp} />{' '}
+                  <PastProjects updateState={setKvp} user={user} />{' '}
                 </div>
               </>
             ) : (
               <>
                 <Login
-                  handleLogin={() => setLoggedIn(true)}
-                  userObject={userObject}
+                  setLoggedIn={setLoggedIn}
+                  setUser={setUser}
                 />
               </>
             )
