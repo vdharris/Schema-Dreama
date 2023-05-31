@@ -24,6 +24,7 @@ function App() {
   const [signedUp, setSignedUp] = useState(false);
 
   //State for Past Projects
+  const [pastProjects, setPastProjects] = useState([]);
 
   //State for user object
   const [user, setUser] = useState({});
@@ -98,8 +99,7 @@ function App() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('this is the data');
-        console.log(data);
+        console.log('data in saved schemas', data);
         setCurrentDocument(data);
         setKvp(JSON.parse(data.schemaSchema));
       })
@@ -142,7 +142,7 @@ function App() {
                 </span>
                 <div>
                   {' '}
-                  <PastProjects updateState={setKvp} />{' '}
+                  <PastProjects updateState={setKvp} setCurrentDocument={setCurrentDocument} />{' '}
                 </div>
                 <SchemaMaker
                   kvpArr={kvpArr}
