@@ -138,9 +138,31 @@ function App() {
       body: JSON.stringify({
         title: currentDocument.title,
         schemaSchema: JSON.stringify(kvpArr),
+        user: user,
+      }),
+      mode: 'cors',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('data in saved schemas', data.schemaSchema);
+        setCurrentDocument(data);
+        setKvp(JSON.parse(data.schemaSchema));
+      }).then(() => schemaFunc.getSavedSchemas())
+      .catch((err) => console.log(err));
+  };
+
+  schemaFunc.updateSchema = () => {
+    fetch('/', {
+      method: 'PATCH',
+      headers: {
+        'Access-Control-Allow-Origin': 'http://localhost:3000/',
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify({
+        title: currentDocument.title,
+        schemaSchema: JSON.stringify(kvpArr),
         _id: currentDocument._id,
         user: user,
-        //user: user want current logged in user
       }),
       mode: 'cors',
     })
@@ -180,7 +202,7 @@ function App() {
         mode: 'cors'
       });
       const result = await response.json();
-      console.log('result in pastprojects', result);
+      // console.log('result in pastprojects', result);
       setSavedSchemas(result);
     } catch (error) {
       // console.error('Error fetching data:', error);
