@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const SchemaRow = ({ schemaObj, rowNum, updateKvpSchema }) => (
-  <div className="schemaRow">
+const SchemaRow = ({ schemaObj, rowNum, updateKvpSchema }) => 
+{
+  // useEffect(() => {
+  //   let clicked = false;
+  //   const nameInField = document.querySelector(`#row${rowNum}`)
+  //   nameInField.addEventListener('click', () => {
+  //     if (!clicked) {
+  //       nameInField.value.select();
+  //       clicked = true;
+  //     }
+  //   })
+  // }, [])
+  return (
+  <div className="schemaRow" id={`row${rowNum}`}>
     <input
       value={schemaObj.name}
+      onFocus={(e) => e.target.select()}
       onChange={(e) => updateKvpSchema(rowNum, { name: e.target.value.split(' ').join('_') })}
     ></input>
 
@@ -81,5 +94,6 @@ const SchemaRow = ({ schemaObj, rowNum, updateKvpSchema }) => (
 
   </div>
 );
+  }
 
 export default SchemaRow;
