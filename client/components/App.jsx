@@ -6,6 +6,8 @@ import { Router, Route, Redirect, Routes } from 'react-router-dom';
 import Login from './Authentication /Login.jsx';
 import SignUp from './Authentication /SignUp.jsx';
 import InputButton from './InputButton.jsx';
+import { createContext, useContext } from 'react';
+
 
 function App() {
   //State for Key-Value Pairs
@@ -35,7 +37,7 @@ function App() {
   // const [signedUp, setSignedUp] = useState(false);
 
   //State for Past Projects
-  const [pastProjects, setPastProjects] = useState([]);
+  const [savedSchemas, setSavedSchemas] = useState([]);
 
   //State for user object
   const [user, setUser] = useState({});
@@ -86,7 +88,7 @@ function App() {
           });
           schemaFunc.clearSchema();
         }
-      })
+      }).then(() => schemaFunc.getSavedSchemas())
       .catch((err) => console.log(err));
   };
   schemaFunc.addRow = () => {
@@ -134,7 +136,7 @@ function App() {
         console.log('data in saved schemas', data.schemaSchema);
         setCurrentDocument(data);
         setKvp(JSON.parse(data.schemaSchema));
-      })
+      }).then(() => schemaFunc.getSavedSchemas())
       .catch((err) => console.log(err));
   };
 
@@ -152,6 +154,25 @@ function App() {
     }
 
     }]);
+  };
+
+  schemaFunc.getSavedSchemas = async () => {
+    try {
+      const response = await fetch(`/getalldocuments/${user}`, {
+        method: "GET",
+        headers: {
+          'Access-Control-Allow-Origin': 'http://localhost:3000/',
+           'Content-type': 'application/json; charset=UTF-8',
+        },
+        mode: 'cors'
+      });
+      const result = await response.json();
+      console.log('result in pastprojects', result);
+      setSavedSchemas(result);
+    } catch (error) {
+      // console.error('Error fetching data:', error);
+      console.log(error);
+    };
   };
 
   // useEffect(() => {
@@ -191,7 +212,7 @@ function App() {
                 />
                 <div id="past-projs">
                   {' '}
-                  <PastProjects schemaFunc={schemaFunc} updateState={setKvp} user={user} />{' '}
+                  <PastProjects savedSchemas={savedSchemas} schemaFunc={schemaFunc} updateState={setKvp} setCurrentDocument={setCurrentDocument} user={user} />{' '}
                 </div>
               </>
             ) : (
