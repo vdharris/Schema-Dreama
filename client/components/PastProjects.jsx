@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-
+import {useContext} from 'react';
 
 function PastProjects(props){
   
   const [data, setData] = useState([]);
+  
+
+  useContext
   
     const url = `/getalldocuments/${props.user}`;
     const tempData = [
@@ -26,7 +29,7 @@ function PastProjects(props){
       }]
    
       
-  console.log('retrieved data in past projects',data)
+  console.log('retrieved data in past projects',props.savedSchemas)
   const styles = {
     color:'blue', 
     display: "flex",
@@ -39,13 +42,14 @@ function PastProjects(props){
   //1. you want to get the document id when they click on the link
   //2. make a fetch request based on the id
   //3. display the SchemaMaker
-  const dataElements = data.map(item => {
+  const dataElements = props.savedSchemas.map(item => {
     console.log('item', item);
     return (
     <li key={item._id}
     onClick = {()=> {
       props.updateState(JSON.parse(item.schemaSchema));
       props.schemaFunc.addName(item.title);
+      props.setCurrentDocument(item);
     }}
     > 
         {item.title}
@@ -53,28 +57,8 @@ function PastProjects(props){
     </li>
   )});
     useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await fetch(url, {
-              method: "GET",
-              headers: {
-                'Access-Control-Allow-Origin': 'http://localhost:3000/',
-                 'Content-type': 'application/json; charset=UTF-8',
-              },
-              mode: 'cors'
-            });
-            const result = await response.json();
-            console.log('result in pastprojects', result);
-            setData(result);
-          } catch (error) {
-            // console.error('Error fetching data:', error);
-            console.log(error);
-          };
-        };
-        console.log('data in pastprojects', data);
-        fetchData();
-        
-      }, []);
+      props.schemaFunc.getSavedSchemas();
+    }, []);
     return ( <>
     <h2>Saved Schemas</h2>
     <div style={styles}>

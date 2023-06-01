@@ -26,8 +26,12 @@ const SchemaMaker = ({ kvpArr, schemaFunc, currentDocument }) => {
         </button>
       </div>
       <div id="schemaExporters">
-        <button onClick={schemaFunc.saveSchema}>SAVE</button>
-        <button onClick={schemaFunc.deleteSchema}>DELETE</button>
+        <button onClick={() => {
+          schemaFunc.saveSchema();
+          }}>SAVE</button>
+        <button onClick={() => {
+          schemaFunc.deleteSchema();
+          }}>DELETE</button>
       </div>
       <SchemaDisplay kvpArr={kvpArr} currentDocument={currentDocument} />
     </div>
