@@ -111,8 +111,8 @@ body {
   border: solid 3px black;
 }
 
-schemaMaker > div:not(first-of-type) {
-  border-top: solid black;
+#schemaRowsHolder > div:not(first-of-type) {
+  border-bottom: solid black;
 }
 
 #schemaMaker > h2 {
@@ -185,6 +185,7 @@ pre {
 .schemaRow {
   margin: .5rem 0;
   padding: 0px;
+  padding-bottom: 0.5em;
   display: flex;
   gap: 3%;
   /* background-color: var(--secondary-color); */
@@ -193,7 +194,7 @@ pre {
   font-family: 'Nunito', sans-serif;
   align-items: center;
   justify-content: space-between;
-  border-radius: .4em;
+  border-radius: .1em;
 }
 
 .schemaRow input, .schemaRow select {

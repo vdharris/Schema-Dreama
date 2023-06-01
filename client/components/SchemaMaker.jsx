@@ -9,6 +9,7 @@ const SchemaMaker = ({ kvpArr, schemaFunc, currentDocument }) => {
   return (
     <div id="schemaMaker">
       Schema - {title}
+      <div id = 'schemaRowsHolder'>
       {kvpArr.map((ele, index) => (
         <SchemaRow
           schemaObj={ele}
@@ -17,6 +18,7 @@ const SchemaMaker = ({ kvpArr, schemaFunc, currentDocument }) => {
           updateKvpSchema={schemaFunc.updateKvpSchema}
         />
       ))}
+      </div>
       <div id="editRows">
         <button title="add row" onClick={schemaFunc.addRow}>
           +
