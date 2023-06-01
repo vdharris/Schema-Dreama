@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const User = require('../model/userModel')
+const bcrypt = require('bcryptjs');
 //change this to User when User Model is completed
 //select all User methods and change to User
 
@@ -10,13 +11,16 @@ userController.verifyLogin = async (req, res, next) => {
     const { username, password } = req.body
     try {
         const result = await User.findOne({ username: username })
+        console.log('User result password when logging in:',result.password);
+        
         if (!result) {
             res.redirect('/signup')
         } else {
-            const verified = await User.findOne({ username, password })
-            if (verified) {
+            //const verified = await User.findOne({ username: username , password})
+            if (await bcrypt.compare(password, result.password)) {
+                // console.log('PASSED bcrypt compare');
                 res.locals.verified = true
-                res.locals.userId = verified._id
+                res.locals.userId = result._id
                 return next()
             } else {
                 res.locals.verified = false
