@@ -80,7 +80,7 @@ app.patch('/', formController.updateDocument, (req, res) => {
 
 //GET to return all past documents
 app.get('/getalldocuments/:id', formController.getAllDocuments, (req, res) => {
-    console.log('all documents', res.locals.allDocuments)
+    // console.log('all documents', res.locals.allDocuments)
     return res.status(200).send(res.locals.allDocuments)
 });
 

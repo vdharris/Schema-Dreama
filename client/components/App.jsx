@@ -191,7 +191,7 @@ function App() {
   useEffect(() => {
     setCurrentDocument({
       ...currentDocument,
-      title: `schema${savedSchemas.length + 1}`
+      // title: `schema${savedSchemas.length + 1}`
     })
   }, [savedSchemas]);
 
@@ -204,7 +204,6 @@ function App() {
           element={
             loggedIn ? (
               <>
-                <h1 id="app-title"><div className='h1Holder'>SCHEAMA DREAMA</div></h1>
                 {/* <div>
                   <img className="menu-bg" src={user.picture}></img>
 
@@ -214,24 +213,31 @@ function App() {
 
                   <h3>{user.name}</h3>
                 </div> */}
+                <nav id='title-logout'>
+
+                <h1 id="app-title"><div className='h1Holder'>SCHEAMA DREAMA</div></h1>
 
                 <button onClick={handleLogOut}>Log Out</button>
+                </nav>
 
-                <InputButton schemaFunc={schemaFunc} />
+                <div id='above-schemaMaker'>
+                  <button onClick={openModal} id="saved-schemas-btn">Saved Schemas</button>
+                  <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel='Test Modal' className='modal' overlayClassName='overlay'>
+
+                    <div id="past-projs">
+                      {' '}
+                      <PastProjects savedSchemas={savedSchemas} schemaFunc={schemaFunc} updateState={setKvp} setCurrentDocument={setCurrentDocument} user={user} handleClick={closeModal}/>{' '}
+                    </div>
+
+                  </Modal>
+                  <InputButton schemaFunc={schemaFunc} />
+                </div>
+
                 <SchemaMaker
                   kvpArr={kvpArr}
                   schemaFunc={schemaFunc}
                   currentDocument={currentDocument}
                 />
-                <button onClick={openModal} id="saved-schemas-btn">Saved Schemas</button>
-                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel='Test Modal' className='modal' overlayClassName='overlay'>
-
-                  <div id="past-projs">
-                    {' '}
-                    <PastProjects savedSchemas={savedSchemas} schemaFunc={schemaFunc} updateState={setKvp} setCurrentDocument={setCurrentDocument} user={user} handleClick={closeModal}/>{' '}
-                  </div>
-
-                </Modal>
               </>
             ) : (
               <>
