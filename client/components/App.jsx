@@ -138,9 +138,31 @@ function App() {
       body: JSON.stringify({
         title: currentDocument.title,
         schemaSchema: JSON.stringify(kvpArr),
+        user: user,
+      }),
+      mode: 'cors',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('data in saved schemas', data.schemaSchema);
+        setCurrentDocument(data);
+        setKvp(JSON.parse(data.schemaSchema));
+      }).then(() => schemaFunc.getSavedSchemas())
+      .catch((err) => console.log(err));
+  };
+
+  schemaFunc.updateSchema = () => {
+    fetch('/', {
+      method: 'PATCH',
+      headers: {
+        'Access-Control-Allow-Origin': 'http://localhost:3000/',
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify({
+        title: currentDocument.title,
+        schemaSchema: JSON.stringify(kvpArr),
         _id: currentDocument._id,
         user: user,
-        //user: user want current logged in user
       }),
       mode: 'cors',
     })
@@ -180,7 +202,7 @@ function App() {
         mode: 'cors'
       });
       const result = await response.json();
-      console.log('result in pastprojects', result);
+      // console.log('result in pastprojects', result);
       setSavedSchemas(result);
     } catch (error) {
       // console.error('Error fetching data:', error);
@@ -191,7 +213,7 @@ function App() {
   useEffect(() => {
     setCurrentDocument({
       ...currentDocument,
-      title: `schema${savedSchemas.length + 1}`
+      // title: `schema${savedSchemas.length + 1}`
     })
   }, [savedSchemas]);
 
@@ -204,7 +226,6 @@ function App() {
           element={
             loggedIn ? (
               <>
-                <h1 id="app-title"><div className='h1Holder'>SCHEAMA DREAMA</div></h1>
                 {/* <div>
                   <img className="menu-bg" src={user.picture}></img>
 
@@ -214,24 +235,31 @@ function App() {
 
                   <h3>{user.name}</h3>
                 </div> */}
+                <nav id='title-logout'>
+
+                <h1 id="app-title"><div className='h1Holder'>SCHEAMA DREAMA</div></h1>
 
                 <button onClick={handleLogOut}>Log Out</button>
+                </nav>
 
-                <InputButton schemaFunc={schemaFunc} />
+                <div id='above-schemaMaker'>
+                  <button onClick={openModal} id="saved-schemas-btn">Saved Schemas</button>
+                  <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel='Test Modal' className='modal' overlayClassName='overlay'>
+
+                    <div id="past-projs">
+                      {' '}
+                      <PastProjects savedSchemas={savedSchemas} schemaFunc={schemaFunc} updateState={setKvp} setCurrentDocument={setCurrentDocument} user={user} handleClick={closeModal}/>{' '}
+                    </div>
+
+                  </Modal>
+                  <InputButton schemaFunc={schemaFunc} />
+                </div>
+
                 <SchemaMaker
                   kvpArr={kvpArr}
                   schemaFunc={schemaFunc}
                   currentDocument={currentDocument}
                 />
-                <button onClick={openModal} id="saved-schemas-btn">Saved Schemas</button>
-                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel='Test Modal' className='modal' overlayClassName='overlay'>
-
-                  <div id="past-projs">
-                    {' '}
-                    <PastProjects savedSchemas={savedSchemas} schemaFunc={schemaFunc} updateState={setKvp} setCurrentDocument={setCurrentDocument} user={user} handleClick={closeModal}/>{' '}
-                  </div>
-
-                </Modal>
               </>
             ) : (
               <>

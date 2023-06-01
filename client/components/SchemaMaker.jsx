@@ -45,7 +45,10 @@ const SchemaMaker = ({ kvpArr, schemaFunc, currentDocument }) => {
       <div id="schemaExporters">
         <button onClick={() => {
           schemaFunc.saveSchema();
-          }}>SAVE</button>
+          }}>CREATE</button>
+          <button onClick={() => {
+          schemaFunc.updateSchema();
+          }}>UPDATE</button>
         <button id="delete" onClick={openModal}>DELETE</button>
 
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel='Test 2 Modal' className='modal' overlayClassName='overlay'>
