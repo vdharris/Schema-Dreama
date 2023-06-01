@@ -22,7 +22,7 @@ const SchemaDisplay = ({ kvpArr, currentDocument }) => {
   console.log('schemaArr', schemaArr)
   const schemaStr = schemaArr.join('\n');
   return (
-    <container>
+    <div className='codeDiv'>
       <pre>
         <code>{schemaStr}</code>
       </pre>
@@ -32,8 +32,9 @@ const SchemaDisplay = ({ kvpArr, currentDocument }) => {
         // copyText.select();
         console.log(copyText.innerHTML);
         navigator.clipboard.writeText(copyText.innerText);
-      }}>Copy text</button>
-    </container>
+      }}>copy!</button>
+      <br/>
+    </div>
 
   );
 };

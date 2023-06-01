@@ -46,10 +46,43 @@ body {
   background-color: var(--secondary-color);
 }
 
+.codeDiv {
+  background-color: darkslategray;
+}
+
+.codeDiv button {
+  background-color: rgb(90, 134, 134);
+  border-color: black;
+  margin: 10px;
+  border-style: outset;
+  border-width: 3px;
+  padding:3px;
+  transition-duration: 0.1s;
+}
+
+.codeDiv button:hover {
+  background-color: rgb(111, 158, 158);
+  border-color: black;
+  margin: 10px;
+  border-style: outset;
+  border-width: 3px;
+  padding:3px;
+}
+
+.codeDiv button:active {
+  background-color: rgb(71, 110, 110);
+  border-color: black;
+  margin: 10px;
+  border-style: inset;
+  border-width: 3px;
+  padding:3px;
+}
+
 pre {
   background-color: darkslategray;
   color: greenyellow;
   padding: 15px;
+  margin: 0px;
 }
 
 .schemaRow {
