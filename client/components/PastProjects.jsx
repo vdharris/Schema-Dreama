@@ -32,6 +32,7 @@ function PastProjects(props){
       props.updateState(JSON.parse(item.schemaSchema));
       props.schemaFunc.addName(item.title);
       props.setCurrentDocument(item);
+      props.handleClick();
     }}
     > 
         {item.title}

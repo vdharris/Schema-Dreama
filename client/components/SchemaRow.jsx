@@ -37,9 +37,10 @@ const SchemaRow = ({ schemaObj, rowNum, updateKvpSchema }) =>
           <option value="Buffer">Buffer</option>
           <option value="mix">Mixed</option>
           <option value="ObjectId">ObjectId</option>
-          <option value="Schema.Types.ObjectDd">Schema.Types.ObjectId</option>
+          <option value="Schema.Types.ObjectId">Schema.Types.ObjectId</option>
         </select>
     
+    </div>
 
       <div id="holdReq">
         <label htmlFor="req">Required: {' '}</label>
@@ -51,40 +52,46 @@ const SchemaRow = ({ schemaObj, rowNum, updateKvpSchema }) =>
           onChange={(e) => updateKvpSchema(rowNum, { require: e.target.checked })}
         ></input>
       </div>
+
+    <div>
+      <div>
+        <label htmlFor="minMax">Min/Max: </label>
+        <select
+        value={schemaObj.minmax.string}
+        name="minMax"
+        className="minmaxSel"
+        onChange={(e) => updateKvpSchema(rowNum, { minmax: { ...schemaObj.minmax, string: e.target.value } })}
+        >
+          <option value="max">Max</option>
+          <option value="min">Min</option>
+          <option value="null">null</option>
+        </select>
+      </div>
+
+      <div id="limit-container">
+        <label htmlFor="limit">Limit: {` `} </label>
+        <input
+        value={schemaObj.minmax.value}
+        id='limit-num'
+        name="limit"
+        type='number'
+        onChange={(e) => updateKvpSchema(rowNum, { minmax: { ...schemaObj.minmax, value: e.target.value } })}
+      ></input>
+      </div>
     </div>
 
     <div>
-      <label htmlFor="minMax">Min/Max:</label>
-      <select
-      value={schemaObj.minmax.string}
-      name="minMax"
-      className="minmaxSel"
-      onChange={(e) => updateKvpSchema(rowNum, { minmax: { ...schemaObj.minmax, string: e.target.value } })}
-      >
-        <option value="max">Max</option>
-        <option value="min">Min</option>
-        <option value="null">null</option>
-      </select>
-
-      <label htmlFor="limit">Limit: {` `}</label>
-      <input
-      value={schemaObj.minmax.value}
-      name="limit"
-      type='number'
-      onChange={(e) => updateKvpSchema(rowNum, { minmax: { ...schemaObj.minmax, value: e.target.value } })}
-    ></input>
-    </div>
-
-    <div>
-      <label htmlFor="default">Default: {' '}</label>
-      <select
-      value={schemaObj.default.value}
-      name="default"
-      onChange={(e) => updateKvpSchema(rowNum, { default: {...schemaObj.default, value: e.target.value }})}
-      >
-        <option value="default">default</option>
-        <option value="null">null</option>
-      </select>
+      <div>
+        <label htmlFor="default">Default: {' '}</label>
+        <select
+        value={schemaObj.default.value}
+        name="default"
+        onChange={(e) => updateKvpSchema(rowNum, { default: {...schemaObj.default, value: e.target.value }})}
+        >
+          <option value="default">default</option>
+          <option value="null">null</option>
+        </select>
+      </div>
 
       <input
       placeholder={schemaObj.default.placeholder}
