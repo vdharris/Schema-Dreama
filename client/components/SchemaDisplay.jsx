@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 const SchemaDisplay = ({ kvpArr, currentDocument }) => {
   // console.log('-----------------', kvpArr)
@@ -26,13 +26,16 @@ const SchemaDisplay = ({ kvpArr, currentDocument }) => {
       <pre>
         <code>{schemaStr}</code>
       </pre>
-      <button onClick={() => {
+      <button className='copyBtn' onClick={(e) => {
         console.log('copying text');
         let copyText = document.querySelector('pre');
+        let codeDiv = document.querySelector('.codeDiv');
         // copyText.select();
-        console.log(copyText.innerHTML);
+        // console.log(copyText.innerText);
         navigator.clipboard.writeText(copyText.innerText);
-      }}>copy!</button>
+        e.target.innerText = 'copied!'
+        setTimeout(() => e.target.innerText = 'copy', 1000)
+      }}>copy</button>
       <br/>
     </div>
 

@@ -12,14 +12,14 @@ function App() {
   //State for Key-Value Pairs
   const [kvpArr, setKvp] = useState([
     { name: '🔥👀😈🐣', 
-    type: 'string', 
+    type: 'String', 
     require: false, 
     minmax: {
-      string: "min",
+      string: "null",
       value: '0'
     },
     default:{
-      value: 'default',
+      value: 'null',
       placeholder: 'placeholder',
     }
    },
@@ -94,14 +94,14 @@ function App() {
     const newState = structuredClone(kvpArr);
     newState.push({ 
       name: `key${kvpArr.length + 1}`,
-      type: 'string', 
+      type: 'String', 
       require: false, 
       minmax: {
-      string: "min",
+      string: "null",
       value: '0'
     },
     default:{
-      value: `default`,
+      value: `null`,
       placeholder: '',
     }
      });
@@ -141,7 +141,7 @@ function App() {
 
   schemaFunc.clearSchema = () => {
     setKvp([{ 
-      name: 'Write something', 
+      name: 'key1', 
       type: 'String', 
       require: false, 
      minmax: {
@@ -175,9 +175,14 @@ function App() {
   };
 
   useEffect(() => {
+    let targetName = 1;
+    for (let i = 0; i < savedSchemas.length; i++) {
+      if (savedSchemas[i].title === `schema${targetName}`)
+      targetName = targetName + 1;
+    }
     setCurrentDocument({
       ...currentDocument,
-      title: `schema${savedSchemas.length + 1}`
+      title: `schema${targetName}`
     })
   }, [savedSchemas]);
 
@@ -193,14 +198,8 @@ function App() {
                 <h1 id="app-title"><div className='h1Holder'>SCHEAMA DREAMA</div></h1>
                 <div>
                   <img className="menu-bg" src={user.picture}></img>
-
-                  {/* <button className="button" onClick={() => setLoggedIn(false)}>
-                    Log Out
-                  </button> */}
-
                   <h3>{user.name}</h3>
                 </div>
-
                 <button onClick={handleLogOut}>Log Out</button>
 
                 {/* <span> */}
