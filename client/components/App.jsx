@@ -6,13 +6,12 @@ import { Router, Route, Redirect, Routes } from 'react-router-dom';
 import Login from './Authentication /Login.jsx';
 import SignUp from './Authentication /SignUp.jsx';
 import InputButton from './InputButton.jsx';
-import { createContext, useContext } from 'react';
 
 
 function App() {
   //State for Key-Value Pairs
   const [kvpArr, setKvp] = useState([
-    { name: 'GoblinGang', 
+    { name: '🔥👀😈🐣', 
     type: 'string', 
     require: false, 
     minmax: {

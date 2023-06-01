@@ -6,7 +6,7 @@ function InputButton(props){
 
     function handleClick(e) {
         e.preventDefault()
-        props.schemaFunc.addName(formData)
+        props.schemaFunc.addName(formData.split(' ').join('_'))
         setFormData('')
     }
     return (
@@ -20,6 +20,6 @@ function InputButton(props){
             </div>
         </div>
         
-      );
+    );
 }
 export default InputButton;

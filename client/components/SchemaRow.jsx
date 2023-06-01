@@ -4,7 +4,7 @@ const SchemaRow = ({ schemaObj, rowNum, updateKvpSchema }) => (
   <div className="schemaRow">
     <input
       value={schemaObj.name}
-      onChange={(e) => updateKvpSchema(rowNum, { name: e.target.value })}
+      onChange={(e) => updateKvpSchema(rowNum, { name: e.target.value.split(' ').join('_') })}
     ></input>
 
     <div>
