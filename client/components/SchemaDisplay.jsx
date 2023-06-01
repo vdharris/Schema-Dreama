@@ -8,8 +8,7 @@ const SchemaDisplay = ({ kvpArr, currentDocument }) => {
 
 
     const tempLine = 
-      `       ${ele.name}: { type: ${ele.type}, require: ${ele.require ? 'true' : 'false'} ${ele.minmax.string!='null' ? `, ${ele.minmax.string} : ${ele.minmax.value}` : ``}  ${ele.default.value!=`null` ? `, ${ele.default.value}: ${ele.default.placeholder}` : ``} },
-      ` 
+      `  ${ele.name}: { type: ${ele.type}, require: ${ele.require ? 'true' : 'false'} ${ele.minmax.string!='null' ? `, ${ele.minmax.string}: ${ele.minmax.value}` : ``} ${ele.default.value!=`null` ? `, ${ele.default.value}: ${ele.default.placeholder}` : ``} },` 
 
     
      ;
@@ -23,9 +22,19 @@ const SchemaDisplay = ({ kvpArr, currentDocument }) => {
   console.log('schemaArr', schemaArr)
   const schemaStr = schemaArr.join('\n');
   return (
-    <pre>
-      <code>{schemaStr}</code>
-    </pre>
+    <container>
+      <pre>
+        <code>{schemaStr}</code>
+      </pre>
+      <button onClick={() => {
+        console.log('copying text');
+        let copyText = document.querySelector('pre');
+        // copyText.select();
+        console.log(copyText.innerHTML);
+        navigator.clipboard.writeText(copyText.innerText);
+      }}>Copy text</button>
+    </container>
+
   );
 };
 
