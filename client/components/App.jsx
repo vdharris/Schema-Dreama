@@ -25,7 +25,7 @@ function App() {
    },
   ]);
   const [currentDocument, setCurrentDocument] = useState({
-    title: 'temp',
+    title: 'schemaName',
     schemaSchema: 'temp',
   });
 
@@ -93,7 +93,7 @@ function App() {
   schemaFunc.addRow = () => {
     const newState = structuredClone(kvpArr);
     newState.push({ 
-      name: 'new row',
+      name: 'new_key',
       type: 'string', 
       require: false, 
       minmax: {
