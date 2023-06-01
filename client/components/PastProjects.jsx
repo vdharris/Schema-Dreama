@@ -9,24 +9,6 @@ function PastProjects(props){
   useContext
   
     const url = `/getalldocuments/${props.user}`;
-    const tempData = [
-      {
-          "_id": "6472390fdbeb9b56b2f98835",
-          "schemaSchema": "[{\"name\":\"GoblinGang\",\"type\":\"String\",\"require\":false}]",
-          "title": "Goblin Schema1"
-      },
-      {
-          "_id": "647240575ae09fd47062b9e3",
-          "title": "Goblin Schema 2",
-          "schemaSchema": "new schema",
-          "__v": 0
-      },
-      {
-          "_id": "647240618ae16081a1f88e38",
-          "title": "Goblin Schema",
-          "schemaSchema": "new schema",
-          "__v": 0
-      }]
    
       
   console.log('retrieved data in past projects',props.savedSchemas)

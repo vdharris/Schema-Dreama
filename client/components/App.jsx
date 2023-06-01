@@ -6,13 +6,12 @@ import { Router, Route, Redirect, Routes } from 'react-router-dom';
 import Login from './Authentication /Login.jsx';
 import SignUp from './Authentication /SignUp.jsx';
 import InputButton from './InputButton.jsx';
-import { createContext, useContext } from 'react';
 
 
 function App() {
   //State for Key-Value Pairs
   const [kvpArr, setKvp] = useState([
-    { name: 'GoblinGang', 
+    { name: '🔥👀😈🐣', 
     type: 'string', 
     require: false, 
     minmax: {
@@ -26,7 +25,7 @@ function App() {
    },
   ]);
   const [currentDocument, setCurrentDocument] = useState({
-    title: 'temp',
+    title: 'schema1',
     schemaSchema: 'temp',
   });
 
@@ -94,7 +93,7 @@ function App() {
   schemaFunc.addRow = () => {
     const newState = structuredClone(kvpArr);
     newState.push({ 
-      name: 'new row',
+      name: `key${kvpArr.length + 1}`,
       type: 'string', 
       require: false, 
       minmax: {
@@ -175,10 +174,12 @@ function App() {
     };
   };
 
-  // useEffect(() => {
-  //   console.log(currentDocument, 'useEffect');
-  //   console.log(kvpArr, 'kvp');
-  // }, [currentDocument, kvpArr]);
+  useEffect(() => {
+    setCurrentDocument({
+      ...currentDocument,
+      title: `schema${savedSchemas.length + 1}`
+    })
+  }, [savedSchemas]);
 
   return (
     <div id="appBox">
@@ -189,7 +190,7 @@ function App() {
           element={
             loggedIn ? (
               <>
-                <h1 id="app-title">Schema Dreama</h1>
+                <h1 id="app-title"><div className='h1Holder'>SCHEAMA DREAMA</div></h1>
                 <div>
                   <img className="menu-bg" src={user.picture}></img>
 

@@ -7,6 +7,10 @@
   --primary-font-color: #034053;
 }
 
+.h1Holder{
+  border-right: solid transparent;
+}
+
 body {
   font-family: 'Nunito', sans-serif;
   min-width: 900px !important;
@@ -122,10 +126,44 @@ body {
   gap: .5rem;
 }
 
+.codeDiv {
+  background-color: darkslategray;
+}
+
+.codeDiv button {
+  background-color: darkslategray;
+  color:white;
+  border-color: black;
+  margin: 10px;
+  border-style: outset;
+  border-width: 3px;
+  padding:3px;
+  transition-duration: 0.2s;
+}
+
+.codeDiv button:hover {
+  background-color: rgb(66, 100, 100);
+  border-color: black;
+  margin: 10px;
+  border-style: outset;
+  border-width: 3px;
+  padding:3px;
+}
+
+.codeDiv button:active {
+  background-color: rgb(57, 90, 90);
+  border-color: black;
+  margin: 10px;
+  border-style: inset;
+  border-width: 3px;
+  padding:3px;
+}
+
 pre {
   background-color: darkslategray;
   color: greenyellow;
   padding: 15px;
+  margin: 0px;
   font-size: 1rem;
 }
 
