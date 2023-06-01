@@ -28,16 +28,16 @@ const SchemaRow = ({ schemaObj, rowNum, updateKvpSchema }) =>
           name="typeSel"
           onChange={(e) => updateKvpSchema(rowNum, { type: e.target.value })}
         >
-          <option value="string">String</option>
-          <option value="number">Number</option>
-          <option value="date">Date</option>
-          <option value="boolean">Boolean</option>
-          <option value="array">array</option>
-          <option value="object">Object</option>
-          <option value="buffer">Buffer</option>
+          <option value="Atring">String</option>
+          <option value="Number">Number</option>
+          <option value="Date">Date</option>
+          <option value="Boolean">Boolean</option>
+          <option value="Array">Array</option>
+          <option value="Object">Object</option>
+          <option value="Buffer">Buffer</option>
           <option value="mix">Mixed</option>
-          <option value="objectId">ObjectId</option>
-          <option value="schematypesobjectid">Schema.Types.ObjectId</option>
+          <option value="ObjectId">ObjectId</option>
+          <option value="Schema.Types.ObjectId">Schema.Types.ObjectId</option>
         </select>
     
     </div>
