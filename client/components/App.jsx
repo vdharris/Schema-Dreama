@@ -168,7 +168,7 @@ function App() {
           element={
             loggedIn ? (
               <>
-                <h1>Schema Dreama</h1>
+                <h1 id="app-title">Schema Dreama</h1>
                 <div>
                   <img className="menu-bg" src={user.picture}></img>
 
@@ -181,15 +181,15 @@ function App() {
 
                 <button onClick={handleLogOut}>Log Out</button>
 
-                <span>
+                {/* <span> */}
                   <InputButton schemaFunc={schemaFunc} />
-                </span>
+                {/* </span> */}
                 <SchemaMaker
                   kvpArr={kvpArr}
                   schemaFunc={schemaFunc}
                   currentDocument={currentDocument}
                 />
-                <div>
+                <div id="past-projs">
                   {' '}
                   <PastProjects schemaFunc={schemaFunc} updateState={setKvp} user={user} />{' '}
                 </div>
