@@ -5,6 +5,10 @@
   --secondary-color: #76eec2;
 }
 
+.h1Holder{
+  border-right: solid transparent;
+}
+
 body {
   font-family: 'Nunito', sans-serif;
 }
@@ -51,17 +55,18 @@ body {
 }
 
 .codeDiv button {
-  background-color: rgb(90, 134, 134);
+  background-color: darkslategray;
+  color:white;
   border-color: black;
   margin: 10px;
   border-style: outset;
   border-width: 3px;
   padding:3px;
-  transition-duration: 0.1s;
+  transition-duration: 0.2s;
 }
 
 .codeDiv button:hover {
-  background-color: rgb(111, 158, 158);
+  background-color: rgb(66, 100, 100);
   border-color: black;
   margin: 10px;
   border-style: outset;
@@ -70,7 +75,7 @@ body {
 }
 
 .codeDiv button:active {
-  background-color: rgb(71, 110, 110);
+  background-color: rgb(57, 90, 90);
   border-color: black;
   margin: 10px;
   border-style: inset;

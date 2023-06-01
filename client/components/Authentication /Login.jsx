@@ -99,7 +99,7 @@ const Login = (props) =>  {
 
     return (
       <div>
-      <h1> SCHEAMA DREAMA </h1>
+      <h1><div className='typingDiv'>SCHEAMA DREAMA</div></h1>
       <div className='main'>
         <div className="login-wrapper">
         <h2 >LOGIN</h2>

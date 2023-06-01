@@ -190,7 +190,7 @@ function App() {
           element={
             loggedIn ? (
               <>
-                <h1>Schema Dreama</h1>
+                <h1><div className='h1Holder'>SCHEAMA DREAMA</div></h1>
                 <div>
                   <img className="menu-bg" src={user.picture}></img>
 
