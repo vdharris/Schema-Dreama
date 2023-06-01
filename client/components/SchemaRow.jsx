@@ -21,39 +21,43 @@ const SchemaRow = ({ schemaObj, rowNum, updateKvpSchema }) =>
     ></input>
 
     <div>
-      Object type: {' '}
-      <select
-        value={schemaObj.type}
-        className="typeSel"
-        onChange={(e) => updateKvpSchema(rowNum, { type: e.target.value })}
-      >
-        <option value="string">String</option>
-        <option value="number">Number</option>
-        <option value="date">Date</option>
-        <option value="boolean">Boolean</option>
-        <option value="array">array</option>
-        <option value="object">Object</option>
-        <option value="buffer">Buffer</option>
-        <option value="mix">Mixed</option>
-        <option value="objectId">ObjectId</option>
-        <option value="schematypesobjectid">Schema.Types.ObjectId</option>
-      </select>
-   
+        <label htmlFor="typeSel">Object type: {' '}</label>
+        <select
+          value={schemaObj.type}
+          className="typeSel"
+          name="typeSel"
+          onChange={(e) => updateKvpSchema(rowNum, { type: e.target.value })}
+        >
+          <option value="string">String</option>
+          <option value="number">Number</option>
+          <option value="date">Date</option>
+          <option value="boolean">Boolean</option>
+          <option value="array">array</option>
+          <option value="object">Object</option>
+          <option value="buffer">Buffer</option>
+          <option value="mix">Mixed</option>
+          <option value="objectId">ObjectId</option>
+          <option value="schematypesobjectid">Schema.Types.ObjectId</option>
+        </select>
+    
 
-  
-      Required: {' '}
-    <input
-      className='require'
-      type="checkbox"
-      checked={schemaObj.require}
-      onChange={(e) => updateKvpSchema(rowNum, { require: e.target.checked })}
-    ></input>
+      <div id="holdReq">
+        <label htmlFor="req">Required: {' '}</label>
+        <input
+          className='require'
+          name="req"
+          type="checkbox"
+          checked={schemaObj.require}
+          onChange={(e) => updateKvpSchema(rowNum, { require: e.target.checked })}
+        ></input>
+      </div>
     </div>
 
     <div>
-      Min/Max:
+      <label htmlFor="minMax">Min/Max:</label>
       <select
       value={schemaObj.minmax.string}
+      name="minMax"
       className="minmaxSel"
       onChange={(e) => updateKvpSchema(rowNum, { minmax: { ...schemaObj.minmax, string: e.target.value } })}
       >
@@ -62,20 +66,20 @@ const SchemaRow = ({ schemaObj, rowNum, updateKvpSchema }) =>
         <option value="null">null</option>
       </select>
 
-      Limit: {` `}
-     
+      <label htmlFor="limit">Limit: {` `}</label>
       <input
       value={schemaObj.minmax.value}
+      name="limit"
       type='number'
       onChange={(e) => updateKvpSchema(rowNum, { minmax: { ...schemaObj.minmax, value: e.target.value } })}
     ></input>
     </div>
 
     <div>
-      Default: {' '}
-      
+      <label htmlFor="default">Default: {' '}</label>
       <select
       value={schemaObj.default.value}
+      name="default"
       onChange={(e) => updateKvpSchema(rowNum, { default: {...schemaObj.default, value: e.target.value }})}
       >
         <option value="default">default</option>
@@ -83,7 +87,7 @@ const SchemaRow = ({ schemaObj, rowNum, updateKvpSchema }) =>
       </select>
 
       <input
-      value={schemaObj.default.placeholder}
+      placeholder={schemaObj.default.placeholder}
       type='text'
       onChange={(e) => updateKvpSchema(rowNum, { default: { ...schemaObj.default, placeholder: e.target.value } })}
     ></input>

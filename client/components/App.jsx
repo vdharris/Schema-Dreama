@@ -190,7 +190,7 @@ function App() {
           element={
             loggedIn ? (
               <>
-                <h1><div className='h1Holder'>SCHEAMA DREAMA</div></h1>
+                <h1 id="app-title"><div className='h1Holder'>SCHEAMA DREAMA</div></h1>
                 <div>
                   <img className="menu-bg" src={user.picture}></img>
 
@@ -203,15 +203,15 @@ function App() {
 
                 <button onClick={handleLogOut}>Log Out</button>
 
-                <span>
+                {/* <span> */}
                   <InputButton schemaFunc={schemaFunc} />
-                </span>
+                {/* </span> */}
                 <SchemaMaker
                   kvpArr={kvpArr}
                   schemaFunc={schemaFunc}
                   currentDocument={currentDocument}
                 />
-                <div>
+                <div id="past-projs">
                   {' '}
                   <PastProjects savedSchemas={savedSchemas} schemaFunc={schemaFunc} updateState={setKvp} setCurrentDocument={setCurrentDocument} user={user} />{' '}
                 </div>

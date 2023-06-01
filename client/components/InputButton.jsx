@@ -10,7 +10,7 @@ function InputButton(props){
         setFormData('')
     }
     return (
-        <div>
+        <div id="set-reset">
             <div>
                 <input type="text" placeholder="New Schema Name" value={formData} onChange={(e) => setFormData(e.target.value)} />
                 <button onClick = {handleClick}>Set Name</button>
