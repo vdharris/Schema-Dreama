@@ -51,7 +51,7 @@ formController.updateDocument = async (req,res,next) => {
     const dupForm = await Form.findOne({ _id });
     console.log(dupForm, 'dupForm');
     if (dupForm) {
-      const updatedForm = await Form.findOneAndUpdate({ _id }, { $set: { schemaSchema } }, { new: true });
+      const updatedForm = await Form.findOneAndUpdate({ _id }, { $set: { title, schemaSchema } }, { new: true });
       res.locals.newDocument = updatedForm;
       console.log('in createDoc if', updatedForm);
       return next();

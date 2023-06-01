@@ -24,8 +24,6 @@ body {
   height: 100vh;
 }
 
-
-
 #app-title {
   margin-top: 0;
   text-shadow: .25rem .25rem .5rem rgba(0, 0, 0, 0.2);
@@ -110,7 +108,7 @@ body {
 }
 
 #schemaExporters > button {
-  width: 91px;
+  width: 100px;
 }
 
 #schemaExporters, #editRows {
@@ -176,14 +174,13 @@ pre {
   width: 80%;
   min-width: 790px;
   font-family: 'Nunito', sans-serif;
-  align-items: center;
-  justify-content: space-between;
   border-radius: .1em;
 }
 
 .schemaRow input, .schemaRow select {
   height: 1.5rem;
   border: solid 1px black;
+  border-radius: .4em;
 }
 
 .typeSel {
