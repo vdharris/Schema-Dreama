@@ -34,7 +34,7 @@ function PastProjects(props){
     color:'blue', 
     display: "flex",
     height: 100,
-    width: 500,
+    width: 300,
     boxShadow: "0 5px 5px 2px #cec7c759",
     border: "1px solid #ccc",
     borderRadius: 20
@@ -61,13 +61,13 @@ function PastProjects(props){
     }, []);
     return ( <>
     <h2>Saved Schemas</h2>
-    <div style={styles}>
+    <div id="past-proj-container">
          
-        <span className="data-container" >
+        <div className="data-container" >
           <ul className="list">
             {dataElements}
           </ul>
-        </span>
+        </div>
     </div>
     </>
       );
