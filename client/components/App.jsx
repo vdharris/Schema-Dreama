@@ -25,7 +25,7 @@ function App() {
    },
   ]);
   const [currentDocument, setCurrentDocument] = useState({
-    title: 'schemaName',
+    title: 'schema1',
     schemaSchema: 'temp',
   });
 
@@ -93,7 +93,7 @@ function App() {
   schemaFunc.addRow = () => {
     const newState = structuredClone(kvpArr);
     newState.push({ 
-      name: 'new_key',
+      name: `key${kvpArr.length + 1}`,
       type: 'string', 
       require: false, 
       minmax: {
@@ -174,10 +174,12 @@ function App() {
     };
   };
 
-  // useEffect(() => {
-  //   console.log(currentDocument, 'useEffect');
-  //   console.log(kvpArr, 'kvp');
-  // }, [currentDocument, kvpArr]);
+  useEffect(() => {
+    setCurrentDocument({
+      ...currentDocument,
+      title: `schema${savedSchemas.length + 1}`
+    })
+  }, [savedSchemas]);
 
   return (
     <div id="appBox">
