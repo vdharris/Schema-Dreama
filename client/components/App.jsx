@@ -6,7 +6,9 @@ import { Router, Route, Redirect, Routes } from 'react-router-dom';
 import Login from './Authentication /Login.jsx';
 import SignUp from './Authentication /SignUp.jsx';
 import InputButton from './InputButton.jsx';
+import Modal from 'react-modal';
 
+Modal.setAppElement(document.getElementById('root'));
 
 function App() {
   //State for Key-Value Pairs
@@ -40,6 +42,18 @@ function App() {
 
   //State for user object
   const [user, setUser] = useState({});
+
+  // State for modal
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  // modal functions
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   //functions to drill down
 
@@ -191,30 +205,33 @@ function App() {
             loggedIn ? (
               <>
                 <h1 id="app-title"><div className='h1Holder'>SCHEAMA DREAMA</div></h1>
-                <div>
+                {/* <div>
                   <img className="menu-bg" src={user.picture}></img>
 
-                  {/* <button className="button" onClick={() => setLoggedIn(false)}>
+                  <button className="button" onClick={() => setLoggedIn(false)}>
                     Log Out
-                  </button> */}
+                  </button>
 
                   <h3>{user.name}</h3>
-                </div>
+                </div> */}
 
                 <button onClick={handleLogOut}>Log Out</button>
 
-                {/* <span> */}
-                  <InputButton schemaFunc={schemaFunc} />
-                {/* </span> */}
+                <InputButton schemaFunc={schemaFunc} />
                 <SchemaMaker
                   kvpArr={kvpArr}
                   schemaFunc={schemaFunc}
                   currentDocument={currentDocument}
                 />
-                <div id="past-projs">
-                  {' '}
-                  <PastProjects savedSchemas={savedSchemas} schemaFunc={schemaFunc} updateState={setKvp} setCurrentDocument={setCurrentDocument} user={user} />{' '}
-                </div>
+                <button onClick={openModal} id="saved-schemas-btn">Saved Schemas</button>
+                <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel='Test Modal' className='modal' overlayClassName='overlay'>
+
+                  <div id="past-projs">
+                    {' '}
+                    <PastProjects savedSchemas={savedSchemas} schemaFunc={schemaFunc} updateState={setKvp} setCurrentDocument={setCurrentDocument} user={user} handleClick={closeModal}/>{' '}
+                  </div>
+
+                </Modal>
               </>
             ) : (
               <>
