@@ -4,7 +4,7 @@ Schema Dreama is a developer tool to automate the process of creating Mongo DB s
 
 Sample :
 
-
+```
 import React, {useState, useEffect} from "react"
 import JeremysSchema from "./components/JeremysSchema";
 import "./styles.css";
@@ -49,3 +49,4 @@ export default function App() {
     </div>
   );
 }
+```
